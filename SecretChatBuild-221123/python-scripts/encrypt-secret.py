@@ -15,7 +15,7 @@ def encrypt_secret(secret, pubkey):
     k = RSA.importKey(pubkey)
     tool = PKCS1_OAEP.new(k)
     en_secret = tool.encrypt(secret)
-    return en_secret
+    return encode_base64(en_secret)
     # PKCS#1 OAEP를 이용한 RSA 암호화 구현
 
 [secret, pubkey] = read_from_base64()

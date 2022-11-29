@@ -12,7 +12,7 @@ def decrypt_secret(secret, priKey):
     k = RSA.importKey(priKey)
     tool=PKCS1_OAEP.new(k)
     de_secret = tool.decrypt(secret)
-    return de_secret
+    return base64.b64encode(de_secret)
     # PKCS#1 OAEP를 이용한 RSA 복호화 구현
 
 [secret, prikey] = read_from_base64()
