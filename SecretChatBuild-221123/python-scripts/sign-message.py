@@ -19,7 +19,7 @@ def read_from_base64():
 # https://pycryptodome.readthedocs.io/en/latest/src/signature/pkcs1_v1_5.html
 def sign(msg, key):
     key = RSA.import_key(key)
-    h = SHA256.new(msg.encode())
+    h = make_message_hash(msg)
     signature = pkcs1_15.new(key).sign(h)
     return signature
     # PKCS #1 v1.5 를 이용한 전자서명 생성

@@ -19,10 +19,9 @@ def read_from_base64():
 # https://pycryptodome.readthedocs.io/en/latest/src/signature/pkcs1_v1_5.html
 def verify(msg, key, signature):
     key = RSA.import_key(key)
-    h = SHA256.new(msg.encode())
+    h = make_message_hash(msg)
     try:
         pkcs1_15.new(key).verify(h, signature)
-        print("ok")
         return "ok"
         # "The signature is valid."
     except (ValueError, TypeError):
